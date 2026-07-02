@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explain My Error</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-labelledby="app-title">
+        <header class="topbar">
+          <div class="brand">
+            <div class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 48 48" role="img">
+                <path d="M24 4 44 15.5v17L24 44 4 32.5v-17L24 4Z" />
+                <path d="M16 18h16M14 25h20M18 32h12" />
+              </svg>
+            </div>
+            <div>
+              <h1 id="app-title">Explain My Error</h1>
+              <p>Transforme mensagens de erro em próximos passos claros.</p>
+            </div>
+          </div>
+          <button class="ghost-button" id="clearButton" type="button" title="Limpar análise">
+            <span aria-hidden="true">↺</span>
+            Limpar
+          </button>
+        </header>
+
+        <section class="input-panel" aria-label="Entrada do erro">
+          <div class="field-row">
+            <label for="contextSelect">Linguagem ou framework</label>
+            <select id="contextSelect">
+              <option value="auto">Detectar automaticamente</option>
+              <option value="javascript">JavaScript</option>
+              <option value="python">Python</option>
+              <option value="react">React</option>
+              <option value="node">Node</option>
+              <option value="git">Git</option>
+            </select>
+          </div>
+
+          <label class="error-label" for="errorInput">Mensagem de erro</label>
+          <textarea
+            id="errorInput"
+            spellcheck="false"
+            placeholder="Cole aqui o stack trace, erro do terminal ou mensagem do navegador..."
+          ></textarea>
+
+          <div class="actions">
+            <button class="primary-button" id="analyzeButton" type="button">
+              <span aria-hidden="true">◆</span>
+              Explicar erro
+            </button>
+            <span class="status" id="statusText" role="status">Pronto para analisar.</span>
+          </div>
+        </section>
+
+        <section class="examples" aria-label="Exemplos">
+          <div class="section-heading">
+            <h2>Exemplos rápidos</h2>
+            <p>Use um deles para testar o analisador.</p>
+          </div>
+          <div class="example-grid" id="exampleGrid"></div>
+        </section>
+      </section>
+
+      <aside class="results" aria-label="Resultado da análise">
+        <div class="result-header">
+          <div>
+            <span class="eyebrow" id="matchLabel">Sem análise</span>
+            <h2 id="resultTitle">Cole um erro para começar</h2>
+          </div>
+          <div class="confidence" id="confidenceBadge">0%</div>
+        </div>
+
+        <div class="result-empty" id="emptyState">
+          <svg viewBox="0 0 240 160" aria-hidden="true">
+            <rect x="35" y="24" width="170" height="112" rx="10" />
+            <path d="M58 54h72M58 76h124M58 98h94" />
+            <circle cx="168" cy="54" r="13" />
+            <path d="m161 61 14-14M175 61 161 47" />
+          </svg>
+          <p>O app procura padrões comuns em JavaScript, Python, React, Node e Git, depois organiza uma hipótese prática de debug.</p>
+        </div>
+
+        <div class="result-content hidden" id="resultContent">
+          <article class="result-block">
+            <h3>Explicação provável</h3>
+            <p id="explanationText"></p>
+          </article>
+
+          <article class="result-block">
+            <h3>Possíveis causas</h3>
+            <ul id="causesList"></ul>
+          </article>
+
+          <article class="result-block">
+            <h3>Passos para resolver</h3>
+            <ol id="stepsList"></ol>
+          </article>
+
+          <article class="result-block">
+            <h3>Checklist de debug</h3>
+            <ul class="checklist" id="checklistList"></ul>
+          </article>
+        </div>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
